@@ -1,6 +1,7 @@
 src/main/java/org/example
 logs/
 target/
+screenshots/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
