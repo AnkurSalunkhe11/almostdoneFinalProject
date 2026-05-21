@@ -87,7 +87,10 @@ public class HomeLoanPage {
         // Collect headers
         List<String> headerRow = new ArrayList<>();
         for (WebElement h : mainTable.findElements(By.cssSelector("tr th"))) {
-            headerRow.add(h.getText().trim());
+            String text = h.getText().trim();
+            if (!text.isEmpty()) {
+                headerRow.add(text);
+            }
         }
         if (!headerRow.isEmpty()) allData.add(headerRow);
 

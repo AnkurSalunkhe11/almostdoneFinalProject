@@ -1,11 +1,24 @@
 package testRunner;
 
-import org.junit.platform.suite.api.IncludeEngines;
-import org.junit.platform.suite.api.SelectClasses;
-import org.junit.platform.suite.api.Suite;
+import org.junit.runner.RunWith;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
 
-@Suite
-@IncludeEngines("cucumber")
-@SelectClasses(TestRunner.class)
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        features = {
+            "Features/CarLoanEMIValidation.feature",
+            "Features/HomeLoanEMIValidation.feature",
+            "Features/EmiCalculatorUIValidation.feature",
+            "Features/LoanCalculatorUIValidation.feature"
+        },
+        glue = {"stepDefinitions", "hooks"},
+        plugin = {
+                "pretty", "html:target/cucumber-report.html",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+        },
+        monochrome = true
+)
+@SuppressWarnings("deprecation")
 public class TestRunner {
 }
