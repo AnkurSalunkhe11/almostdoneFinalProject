@@ -18,6 +18,15 @@
 	</properties>
 
     <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>Features</directory>
+                <targetPath>Features</targetPath>
+            </testResource>
+        </testResources>
 	    <pluginManagement>
 	        <plugins>
 	            <plugin>
@@ -30,6 +39,11 @@
 	                <groupId>org.apache.maven.plugins</groupId>
 	                <artifactId>maven-surefire-plugin</artifactId>
 	                <version>3.5.5</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/TestRunner.java</exclude>
+                        </excludes>
+                    </configuration>
 	            </plugin>
 	        </plugins>
 	    </pluginManagement>
@@ -79,13 +93,25 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.10.2</version>
+            <version>5.13.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <version>5.10.2</version>
+            <version>5.13.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>7.34.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>1.13.0</version>
             <scope>test</scope>
         </dependency>
 
